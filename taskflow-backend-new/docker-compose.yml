@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:latest # Utiliza a versão mais recente do PostgreSQL
+    container_name: postgres # Nome do container
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER} # Substitua pelo nome de usuário que desejar
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # Substitua pela senha que desejar
+      POSTGRES_DB: ${POSTGRES_DB} # Substitua pelo nome do banco de dados que desejar
+    ports:
+      - "5432:5432" # Exponha a porta 5432 para acessar o PostgreSQL localmente
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persistência dos dados
+
+volumes:
+  postgres_data:
+    driver: local
